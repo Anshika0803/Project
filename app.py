@@ -47,7 +47,7 @@ class EnrollmentApp:
             tk.Button(self.dashboard_frame, text="View Candidates", command=self.view_candidates).grid(row=0, column=1, padx=5, pady=5)
         elif self.user_role == 'user':
             tk.Button(self.dashboard_frame, text="View Candidates", command=self.view_candidates).grid(row=0, column=0, padx=5, pady=5)
-
+        tk.Button(self.dashboard_frame, text="Back", command=self.back_to_login).grid(row=1, column=0, columnspan=2, pady=10)
     def add_candidate(self):
         self.dashboard_frame.pack_forget()
         self.add_frame = tk.Frame(self.root)
@@ -93,6 +93,9 @@ class EnrollmentApp:
     def back_to_dashboard(self):
         self.view_frame.pack_forget()
         self.create_dashboard()
+    def back_to_login(self):
+        self.dashboard_frame.pack_forget()
+        self.create_login_frame()
 
 if __name__ == "__main__":
     root = tk.Tk()
