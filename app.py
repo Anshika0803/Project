@@ -35,7 +35,7 @@ class EnrollmentApp:
             user = session.query(Candidate).filter_by(email=username).first()
             if user and password == 'password':  # Simplified password check
                 self.user_role = 'user'
-                # self.logged_in_user = user
+                self.logged_in_user = user
                 self.login_frame.pack_forget()
                 self.create_user_dashboard()
             else:
@@ -56,14 +56,13 @@ class EnrollmentApp:
         self.dashboard_frame = ttk.Frame(self.root, padding="10 10 10 10")
         self.dashboard_frame.pack(padx=10, pady=10, fill='x', expand=True)
 
-       
+        # Display user's data
         ttk.Label(self.dashboard_frame, text=f"Welcome, {self.logged_in_user.name}").grid(row=0, column=0, padx=5, pady=5, sticky='w')
         ttk.Label(self.dashboard_frame, text=f"Email: {self.logged_in_user.email}").grid(row=1, column=0, padx=5, pady=5, sticky='w')
         ttk.Label(self.dashboard_frame, text=f"Phone: {self.logged_in_user.phone}").grid(row=2, column=0, padx=5, pady=5, sticky='w')
         ttk.Label(self.dashboard_frame, text=f"Status: {self.logged_in_user.status}").grid(row=3, column=0, padx=5, pady=5, sticky='w')
 
         ttk.Button(self.dashboard_frame, text="Back", command=self.back_to_login).grid(row=4, column=0, pady=10)
-    
     def add_candidate(self):
         self.dashboard_frame.pack_forget()
         self.add_frame = ttk.Frame(self.root, padding="10 10 10 10")
